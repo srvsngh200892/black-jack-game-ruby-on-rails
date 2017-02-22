@@ -1,0 +1,45 @@
+<h1>Blackjack Stats</h1>
+<span class='btn btn-success pull-right'>
+  <%= link_to 'Logout', :action => "logout" %>
+</span>
+<p>
+Welcome to the Blackjack Stats,
+<%= @user ? @user.name : "" %>.
+</p>
+<h1>Listing user games</h1>
+
+<div class="container">        
+  <table class="table table-striped">
+  <tr>
+    <th>User</th>
+     <% @games.each_with_index do |count, i| %>
+      <th>GAME<%= i %></th>
+     <% end %>  
+  </tr>
+  <tbody>
+    <td><%= @user.name %></td>
+    <% @games.each do |user_game| %>
+        <td><%= @user.hand(user_game.game).value %></td>
+    <% end %>
+    <tr>
+      <td>Dealer</td>
+       <% @games.each do |user_game| %>
+          <td><%= user_game.game.dealer.hand(user_game.game).value %></td>
+      <% end %>
+    </tr>  
+  </tbody>
+  </table>
+</div
+
+<br />
+<span class='btn btn-success' style="margin-left:500px;">
+  <%= link_to 'Play a new game', :controller => "games", :action => "setup" %>
+</span>
+&nbsp;
+&nbsp;
+&nbsp;
+<span class='btn btn-success' >
+    <%= link_to 'Check Out leaderboard', :controller => "users", :action => "index" %>
+</span>    
+
+

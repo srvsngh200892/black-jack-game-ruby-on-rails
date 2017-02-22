@@ -1,0 +1,31 @@
+<h1>Listing games</h1>
+
+<div class="container">        
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>WIN</th>
+        <th>LOOSE</th>
+        <th>TIE</th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @games.each do |game| %>
+        <tr>
+          <td><%= game.win %></td>
+          <td><%= game.lose %></td>
+          <td><%= game.tie %></td>
+          <td><%= link_to 'Show', game %></td>
+          <td><%= link_to 'Edit', edit_game_path(game) %></td>
+          <td><%= link_to 'Destroy', game, confirm: 'Are you sure?', method: :delete %></td>
+        </tr>
+      <% end %>
+      <tbody>
+  </table>
+</div>
+<br/>
+
+<%= link_to 'New Game', new_game_path %>

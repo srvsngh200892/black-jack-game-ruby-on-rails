@@ -1,0 +1,7 @@
+development:
+  adapter: postgresql
+  encoding: utf8
+  database: blackjack_local
+  username: xyz
+  password:
+  host: localhost

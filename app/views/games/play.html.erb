@@ -1,0 +1,52 @@
+<span class='btn btn-success pull-right'>
+  <%= link_to 'Logout', :controller => "users", :action => "logout" %>
+</span>
+<h1> Let's Play Your Game </h2>
+<div class='row'>
+	<div class='col-md-6'>
+		<p class='label label-primary'> Player <%= @user.name %>'s hand:
+		<ul>
+		<li> card ranks in order of play: <%= @user.hand(@game).cards.map { |c| c.rank } %> </li>
+		<li> value of hand: <%= @user.hand(@game).value %> </li>
+		</ul>
+  </div>
+  <div class='col-md-6'>
+		<p class = 'label label-primary'> Dealer's hand: </p>
+		<ul>
+		<li> 
+			card ranks in order of play: <%= @game.dealer.hand(@game).cards.map { |c| c.rank } %>
+		</li>
+		<li> value of hand: <%= @game.dealer.hand(@game).value %> </li>
+		</ul>
+	</div>	
+</div>		
+
+<% if @game.is_done? then %>
+	<p class="label label-primary"> 
+		The game is done!
+		<%= @game.winner == @user ? "You won!" : "You lost." %>
+	</p>
+	<br>
+	<br>
+	<br>
+  <span class='btn btn-success'>
+		<%= link_to 'Check Out leaderboard', :controller => "users", :action => "index" %>
+	</span>
+	&nbsp;
+  &nbsp;
+  &nbsp;
+	<span class='btn btn-success' >
+	   <%= link_to 'Check Out Your Stats', :controller => "users", :action => "stats" %>
+	</span>    	
+<% else %>
+	<p class='label label-primary'> <%= @user.name %>, do you want to: </p>
+	<br>
+	<br>
+	<ul>
+	<li  class='btn btn-success'> <%= link_to 'PULL?',  :controller => "games", :action => "pull"%> </li>
+	<li  class='btn btn-danger'> <%= link_to 'SKIP ?', :controller => "games", :action => "skip"%> </li>
+	</ul>
+<% end %>
+
+
+

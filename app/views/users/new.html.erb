@@ -1,0 +1,13 @@
+<div class="formContainer">
+ <div class ="verticalCenter">
+   <div class="col-xs-12 col-sm-offset-4 col-sm-4 loginForms">
+     <h2 text="center">BlackJack SignUp</h2>
+    <%= simple_form_for(@user) do |f| %>
+  		<%= f.error_notification %>
+      <%= f.input :name, autofocus: true, placeholder: "User Name" ,class: "col-md-12" %>
+      <%= f.input :password, autocomplete: "off", placeholder: "password" ,class: "col-md-12" %>
+      <%= f.button :submit, "register new user" ,class: 'col-md-12'%>
+    <% end %>
+   </div>
+ </div>
+</div>

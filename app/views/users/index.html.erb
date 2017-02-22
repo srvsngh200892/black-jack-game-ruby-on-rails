@@ -1,0 +1,41 @@
+<h1>Blackjack Leaderboard</h1>
+<span class='btn btn-success pull-right'>
+  <%= link_to 'Logout', :action => "logout" %>
+</span>
+<p>
+Welcome to the Blackjack leaderboard,
+<%= @user ? @user.name : "" %>.
+</p>
+<h1>Listing user games</h1>
+
+<div class="container">        
+  <table class="table table-striped">
+  <tr>
+    <th>User</th>
+    <th>WIN</th>
+    <th>LOOSE</th>
+  </tr>
+  <tbody>
+  <% @users.each do |user| %>
+    <tr>
+      <td><%= user.name %></td>
+      <td><%= user.wins %></td>
+      <td><%= user.losses %></td>
+    </tr>
+  <% end %>
+  </tbody>
+  </table>
+</div
+
+<br />
+<span class='btn btn-success' style="margin-left:500px;">
+  <%= link_to 'Play a new game', :controller => "games", :action => "setup" %>
+</span>
+&nbsp;
+&nbsp;
+&nbsp;
+<span class='btn btn-success' >
+    <%= link_to 'Check Out Your Stats', :controller => "users", :action => "stats" %>
+</span>      
+
+
